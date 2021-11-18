@@ -1,0 +1,19 @@
+.root {
+  @apply bg-black;
+  height: 320px;
+}
+
+.secoundary {
+  @apply bg-white;
+}
+
+.container {
+  @apply flex flex-row;
+
+  & {
+  }
+
+  & > * {
+    @apply flex-1 px-16 py-5 relative;
+  }
+}

@@ -27,5 +27,12 @@
 }
 
 .layoutB {
-  color: blue;
+  /* 2, 8, 14 */
+  /* 6, 12, 18 */
+  & > *:nth-child(6n + 2),
+  & > *:nth-child(6n + 6) {
+    @screen lg {
+      @apply col-span-2 row-span-2;
+    }
+  }
 }
