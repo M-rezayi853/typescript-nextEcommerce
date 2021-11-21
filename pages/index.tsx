@@ -19,7 +19,9 @@ export async function getStaticProps() {
   }
 }
 
-function Home({ products }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({
+  products,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Grid>
@@ -55,5 +57,3 @@ function Home({ products }: InferGetStaticPropsType<typeof getStaticProps>) {
 }
 
 Home.Layout = Layout
-
-export default Home
