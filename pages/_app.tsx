@@ -3,6 +3,7 @@ import { FC } from 'react'
 
 import { UIProvider } from '@components/ui/context'
 import '@assets/main.css'
+import 'keen-slider/keen-slider.min.css'
 
 const Noop: FC = ({ children }) => <>{children}</>
 
