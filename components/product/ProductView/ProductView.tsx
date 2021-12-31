@@ -26,13 +26,12 @@ const ProductView: FC<Props> = ({ product }) => {
     try {
       const item = {
         productId: String(product.id),
-        variantId: variant?.id,
+        variantId: String(variant?.id),
         varinatOptions: variant?.options,
+        quantity: 1,
       }
 
       const output = await addItem(item)
-      alert(JSON.stringify(output))
-
       openSidebar()
     } catch (error) {}
   }

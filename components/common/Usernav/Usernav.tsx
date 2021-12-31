@@ -10,7 +10,6 @@ const Usernav: FC = () => {
   const { openSidebar } = useUI()
 
   const { data } = useCart()
-  debugger
 
   return (
     <nav>
