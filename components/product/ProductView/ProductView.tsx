@@ -32,6 +32,7 @@ const ProductView: FC<Props> = ({ product }) => {
       }
 
       const output = await addItem(item)
+
       openSidebar()
     } catch (error) {}
   }
