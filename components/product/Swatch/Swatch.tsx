@@ -11,9 +11,17 @@ interface Props {
   variant?: 'size' | 'color' | string
   onClick: () => void
   active?: boolean
+  size?: 'sm' | 'md' | 'lg'
 }
 
-const Swatch: FC<Props> = ({ color, label, variant, active, ...rest }) => {
+const Swatch: FC<Props> = ({
+  color,
+  label,
+  variant,
+  active,
+  size = 'md',
+  ...rest
+}) => {
   label = label?.toLowerCase()
   variant = variant?.toLowerCase()
 
@@ -22,6 +30,7 @@ const Swatch: FC<Props> = ({ color, label, variant, active, ...rest }) => {
     [s.color]: color,
     [s.size]: variant === 'size',
     [s.dark]: color && isDark(color),
+    [s.sm]: size === 'sm',
   })
 
   return (

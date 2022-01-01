@@ -3,14 +3,13 @@ import cn from 'classnames'
 
 import { Bag, Cross } from '@components/icons'
 import { useUI } from '@components/ui/context'
-import useCart from '@common/cart/use-cart'
+import useCart from '@framework/cart/use-cart'
+import { LineItem } from '@common/types/cart'
+import CartItem from '../CartItem'
 
 const CartSidebar: FC = () => {
-  const isEmpty = true
   const { closeSidebar } = useUI()
-  const { data } = useCart()
-  console.log(data)
-  debugger
+  const { data, isEmpty } = useCart()
 
   const rootClass = cn('h-full flex flex-col', {
     'bg-secondary text-secondary': isEmpty,
@@ -50,7 +49,13 @@ const CartSidebar: FC = () => {
               My Cart
             </h2>
             <ul className='py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accents-3 border-t border-accents-3'>
-              Cart Items Here!
+              {data?.lineItems.map((item: LineItem) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  currencyCode={data.currency.code}
+                />
+              ))}
             </ul>
           </div>
           <div className='flex-shrink-0 px-4  py-5 sm:px-6'>
@@ -58,7 +63,9 @@ const CartSidebar: FC = () => {
               <ul className='py-3'>
                 <li className='flex justify-between py-1'>
                   <span>Subtotal</span>
-                  <span>20 $</span>
+                  <span>
+                    {data?.lineItemsSubtotalPrice} {data?.currency.code}
+                  </span>
                 </li>
                 <li className='flex justify-between py-1'>
                   <span>Taxes</span>
@@ -71,7 +78,9 @@ const CartSidebar: FC = () => {
               </ul>
               <div className='flex justify-between border-t border-accents-3 py-3 font-bold mb-10'>
                 <span>Total</span>
-                <span>120 $</span>
+                <span>
+                  {data?.totalPrice} {data?.currency.code}
+                </span>
               </div>
             </div>
             <button
