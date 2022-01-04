@@ -3,7 +3,7 @@ import { checkoutDetailFragment } from '../common'
 const checkoutLineItemsAdd = `
   mutation(
     $checkoutId: ID!,
-    $lineItems: [CheckoutLineItemInput]!) {
+    $lineItems: [CheckoutLineItemInput!]! ) {
     checkoutLineItemsAdd(checkoutId: $checkoutId, lineItems: $lineItems) {
       checkoutUserErrors {
         field
